@@ -5,14 +5,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g3d.model.Animation;
 import com.badlogic.gdx.math.Vector2;
 import com.surreal.game.GameObject;
 
+import Handler.Assets;
+import Screens.GameScreen;
+
 public class Player extends GameObject{
 	
-	private Vector2 velocity = new Vector2();
-	private float speed = 60*2;
-	
+	private com.badlogic.gdx.graphics.g2d.Animation playerAnimation;
+	private float runTime;
 	
 	public Player() {
 		pos.x = 1f;
@@ -20,19 +24,15 @@ public class Player extends GameObject{
 		dim.x = .5f;
 		dim.y = .5f;
 		
-		color = Color.DARK_GRAY;
-		createGraphics();
-		
-		sprite.setPosition(pos.x, pos.y);
-		sprite.setSize(dim.x, dim.y);
+		playerAnimation = Assets.portal.getAnimation();
 	}
 	
 	public void update(float deltaTime) {
-		
+		runTime += deltaTime;
 	}
 	
 	public void render(SpriteBatch sb) {
-		sprite.draw(sb);
+		sb.draw((TextureRegion)playerAnimation.getKeyFrame(runTime), pos.x, pos.y, dim.x, dim.y);
 	}
 	
 }

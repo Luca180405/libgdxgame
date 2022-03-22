@@ -106,7 +106,7 @@ public class GameScreen extends GameStateManager{
 	public void render(float deltaTime) {
 		
 		// Clear screen
-		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClearColor(50f/255.0f, 11f/255.0f, 11f/255.0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
